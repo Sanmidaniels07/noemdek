@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import  { ChangeEvent, useState } from "react";
 import Calendar from "react-calendar";
 import NavBar from "./NavBar";
 import profile1 from "../../assets/profilepix-1.jpeg";
@@ -29,30 +29,30 @@ interface scheduleProps {
 
 const Scheduling = () => {
   const [selectedOption, setSelectedOption] = useState("Drivers"); // Default to Drivers
-  const [selectedView, setSelectedView] = useState("month"); // Default to month view
+  // const [selectedView, setSelectedView] = useState("month"); // Default to month view
   const [value, onChange] = useState<Value>(new Date());
   const [selectedSchedule, setSelectedSchedule] = useState<scheduleProps>(); // State variable to track the selected schedule
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Function to handle schedule selection
 
-  const handleScheduleClick = ({ schedule }: { schedule: scheduleProps }) => {
-    setSelectedSchedule(schedule);
-    setIsModalOpen(true);
-  };
+  // const handleScheduleClick = ({ schedule }: { schedule: scheduleProps }) => {
+  //   setSelectedSchedule(schedule);
+  //   setIsModalOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
   // Function to handle option change
-  const handleOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(event.target.value);
   };
 
   // Function to handle view change
-  const handleViewChange = (view: string) => {
-    setSelectedView(view);
-  };
+  // const handleViewChange = (view: string) => {
+  //   setSelectedView(view);
+  // };
 
   
 
