@@ -4,7 +4,6 @@ import NavBar from "./NavBar";
 import profile1 from "../../assets/profilepix-1.jpeg";
 import profile2 from "../../assets/profilepix-2.webp";
 import car from "../../assets/CAR.jpeg";
-import truck from "../../assets/TRUCK.jpeg";
 import suv from "../../assets/LEXUS.jpeg";
 
 type ValuePiece = Date | null;
@@ -55,31 +54,7 @@ const Scheduling = () => {
     setSelectedView(view);
   };
 
-  const getNumberOfDays = (startDate: Date, endDate: Date) => {
-    if (!(startDate instanceof Date) || !(endDate instanceof Date)) {
-      console.error("Invalid date objects");
-      return NaN;
-    }
-    const startTime = startDate.getTime();
-    const endTime = endDate.getTime();
-
-    if (isNaN(startTime) || isNaN(endTime)) {
-      console.error("Start time or end time is not a number");
-      return NaN;
-    }
-    const diffInTime = endTime - startTime;
-    if (isNaN(diffInTime)) {
-      console.error("Difference in time is not a number");
-      return NaN;
-    }
-    const diffInDays = diffInTime / (1000 * 3600 * 24);
-
-    if (isNaN(diffInDays)) {
-      console.error("Difference in days is not a number");
-      return NaN;
-    }
-    return diffInDays + 1;
-  };
+  
 
   const convertDateToDayNumber = (dateString: Date) => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -225,62 +200,7 @@ const Scheduling = () => {
     },
   ];
 
-  const scheduleData = [
-    {
-      id: 1,
-      vehicle: "Lexus GLS 500",
-      driver: "David James",
-      client: "British Petroleum",
-      driverImage: profile1,
-      driverType: "senior driver",
-      pickUpLocation: "Lagos",
-      size: "Full size SUV",
-      condition: "Needs repair",
-      customer: "David",
-      startDate: new Date("2021-02-15T06:00:00"),
-      endDate: new Date("2021-02-15T19:00:00"),
-      dropOffLocation: "same as pick up location",
-      image: suv,
-      startSpan: 1,
-      length: 2,
-    },
-    {
-      id: 2,
-      vehicle: "Lexus GLS 450",
-      driver: "Charles Erikson",
-      client: "Individual",
-      driverImage: profile2,
-      driverType: "senior driver",
-      pickUpLocation: "Ikoyi-Lekki",
-      size: "Full size SUV",
-      condition: "Needs repair",
-      customer: "Charles",
-      startDate: new Date("2021-02-15T06:00:00"),
-      endDate: new Date("2021-02-15T19:00:00"),
-      dropOffLocation: "same as pick up location",
-      image: suv,
-      startSpan: 1,
-      length: 3,
-    },
-    {
-      id: 3,
-      vehicle: "Toyota Camry",
-      driver: "Sunday Abu",
-      client: "Dangote Ltd.",
-      driverImage: profile2,
-      driverType: "senior driver",
-      pickUpLocation: "Ikoyi, Lekki",
-      size: "Full size SUV",
-      condition: "Needs repair",
-      customer: "Sunday",
-      startDate: new Date("2021-02-15T06:00:00"),
-      endDate: new Date("2021-02-15T19:00:00"),
-      dropOffLocation: "same as pick up location",
-      image: car,
-      startSpan: 1,
-      length: 4,
-    },
-  ];
+  
 
   return (
     <div className="bg-gray-300 sm:h-[55rem] hidden lg:block h-[80rem]  overflow-hidden">
@@ -442,10 +362,8 @@ const Scheduling = () => {
               onChange={onChange}
               value={value}
               className="w-[220px] ml-3 text-center"
-              calendarClassName="custom-calendar"
               prev2Label={null}
               next2Label={null}
-              style={{ fontFamily: "Arial", fontSize: "16px" }} // Customize calendar font style
               tileClassName={({ date }) => {
                 const isToday = date.getDate() === new Date().getDate();
                 const weekNumber = Math.ceil(date.getDate() / 7);
